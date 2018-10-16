@@ -1,4 +1,5 @@
 ﻿using ApK.Models;
+using ApkDomain.DataModel.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ namespace ApkDomain.DataModel
 {
     public class ApkContext: DbContext
     {
-        public DbSet<ItemModel> items { get; set; }
-        public DbSet<personModel> persons { get; set; }
+        public DbSet<ItemEntity> items { get; set; }
+        public DbSet<personEntity> persons { get; set; }
     }
 }
