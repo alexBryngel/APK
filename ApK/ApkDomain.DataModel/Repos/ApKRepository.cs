@@ -21,5 +21,10 @@ namespace ApkDomain.DataModel.Repos
             _apkContext.items.Add(item);
             _apkContext.SaveChanges();
         }
+
+        public IEnumerable<ItemEntity> GetEntities()
+        {
+            return _apkContext.items;
+        }
     }
 }

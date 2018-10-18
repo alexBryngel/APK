@@ -3,12 +3,12 @@ namespace ApkDomain.DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class intitial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.ItemModels",
+                "dbo.ItemEntities",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -17,14 +17,14 @@ namespace ApkDomain.DataModel.Migrations
                         amount = c.Double(nullable: false),
                         alcohol = c.Double(nullable: false),
                         apk = c.Double(nullable: false),
-                        personModel_Id = c.Int(),
+                        personEntity_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.personModels", t => t.personModel_Id)
-                .Index(t => t.personModel_Id);
+                .ForeignKey("dbo.personEntities", t => t.personEntity_Id)
+                .Index(t => t.personEntity_Id);
             
             CreateTable(
-                "dbo.personModels",
+                "dbo.personEntities",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -36,10 +36,10 @@ namespace ApkDomain.DataModel.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.ItemModels", "personModel_Id", "dbo.personModels");
-            DropIndex("dbo.ItemModels", new[] { "personModel_Id" });
-            DropTable("dbo.personModels");
-            DropTable("dbo.ItemModels");
+            DropForeignKey("dbo.ItemEntities", "personEntity_Id", "dbo.personEntities");
+            DropIndex("dbo.ItemEntities", new[] { "personEntity_Id" });
+            DropTable("dbo.personEntities");
+            DropTable("dbo.ItemEntities");
         }
     }
 }

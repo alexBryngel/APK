@@ -7,13 +7,13 @@ namespace ApkDomain.DataModel.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class intitial : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(intitial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810121343299_intitial"; }
+            get { return "201810180859196_Initial"; }
         }
         
         string IMigrationMetadata.Source

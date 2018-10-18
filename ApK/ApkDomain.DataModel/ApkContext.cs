@@ -1,4 +1,4 @@
-﻿using ApK.Models;
+﻿
 using ApkDomain.DataModel.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +11,11 @@ namespace ApkDomain.DataModel
 {
     public class ApkContext: DbContext
     {
+        public ApkContext():base("DefaultConnection")
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
+        }
         public DbSet<ItemEntity> items { get; set; }
         public DbSet<personEntity> persons { get; set; }
     }
