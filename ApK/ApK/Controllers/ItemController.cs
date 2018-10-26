@@ -20,5 +20,11 @@ namespace ApK.Controllers
 
             return repo.GetEntities();
         }
+
+        [HttpPost]
+        public void post()
+        {
+
+        }
     }
 }
