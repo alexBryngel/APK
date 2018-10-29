@@ -22,9 +22,21 @@ namespace ApK.Controllers
         }
 
         [HttpPost]
-        public void post()
+        public void post([FromBody]ItemModel item)
         {
+            var repo = new ApKRepository(new ApkContext());
 
+            var itemEntity = new ItemEntity
+            {
+                alcohol = item.alcohol,
+                amount = item.amount,
+                apk = item.alcohol * item.amount / item.price,                
+                name = item.name,
+                price = item.price
+            };
+
+
+            repo.addItem(itemEntity);
         }
     }
 }

@@ -18,5 +18,6 @@ namespace ApkDomain.DataModel
         }
         public DbSet<ItemEntity> items { get; set; }
         public DbSet<personEntity> persons { get; set; }
+        public DbSet<rawItemEntity> rawItems { get; set; }
     }
 }

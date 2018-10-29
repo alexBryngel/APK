@@ -18,6 +18,8 @@ namespace ApK
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            var service = new Service.ApkService(new ApkDomain.DataModel.Repos.ApKRepository(new ApkDomain.DataModel.ApkContext()));
+            service.readXls();
         }
     }
 }

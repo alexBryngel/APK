@@ -51,9 +51,26 @@
     <Compile Include="ApkContext.cs" />
     <Compile Include="Entities\ItemEntity.cs" />
     <Compile Include="Entities\personEntity.cs" />
+    <Compile Include="Entities\rawItemEntity.cs" />
     <Compile Include="Migrations\201810180859196_Initial.cs" />
     <Compile Include="Migrations\201810180859196_Initial.Designer.cs">
       <DependentUpon>201810180859196_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810290920053_RawEntity.cs" />
+    <Compile Include="Migrations\201810290920053_RawEntity.Designer.cs">
+      <DependentUpon>201810290920053_RawEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810291403013_RawEntityUpdate.cs" />
+    <Compile Include="Migrations\201810291403013_RawEntityUpdate.Designer.cs">
+      <DependentUpon>201810291403013_RawEntityUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810291407460_RawEntityUpdateAgain.cs" />
+    <Compile Include="Migrations\201810291407460_RawEntityUpdateAgain.Designer.cs">
+      <DependentUpon>201810291407460_RawEntityUpdateAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810291416370_AlkoholhaltToDouble.cs" />
+    <Compile Include="Migrations\201810291416370_AlkoholhaltToDouble.Designer.cs">
+      <DependentUpon>201810291416370_AlkoholhaltToDouble.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +85,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810180859196_Initial.resx">
       <DependentUpon>201810180859196_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810290920053_RawEntity.resx">
+      <DependentUpon>201810290920053_RawEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810291403013_RawEntityUpdate.resx">
+      <DependentUpon>201810291403013_RawEntityUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810291407460_RawEntityUpdateAgain.resx">
+      <DependentUpon>201810291407460_RawEntityUpdateAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810291416370_AlkoholhaltToDouble.resx">
+      <DependentUpon>201810291416370_AlkoholhaltToDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
