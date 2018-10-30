@@ -72,6 +72,18 @@
     <Compile Include="Migrations\201810291416370_AlkoholhaltToDouble.Designer.cs">
       <DependentUpon>201810291416370_AlkoholhaltToDouble.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810300812560_UtgattChangeName.cs" />
+    <Compile Include="Migrations\201810300812560_UtgattChangeName.Designer.cs">
+      <DependentUpon>201810300812560_UtgattChangeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810300823384_RenameTabel.cs" />
+    <Compile Include="Migrations\201810300823384_RenameTabel.Designer.cs">
+      <DependentUpon>201810300823384_RenameTabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810301439236_ItemUpdate.cs" />
+    <Compile Include="Migrations\201810301439236_ItemUpdate.Designer.cs">
+      <DependentUpon>201810301439236_ItemUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\ApKRepository.cs" />
@@ -97,6 +109,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810291416370_AlkoholhaltToDouble.resx">
       <DependentUpon>201810291416370_AlkoholhaltToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300812560_UtgattChangeName.resx">
+      <DependentUpon>201810300812560_UtgattChangeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300823384_RenameTabel.resx">
+      <DependentUpon>201810300823384_RenameTabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810301439236_ItemUpdate.resx">
+      <DependentUpon>201810301439236_ItemUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

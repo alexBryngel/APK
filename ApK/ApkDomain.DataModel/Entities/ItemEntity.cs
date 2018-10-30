@@ -9,11 +9,16 @@ namespace ApkDomain.DataModel.Entities
     public class ItemEntity
     {
         public int Id { get; set; }
+        public string varunummer { get; set; }
         public string name { get; set; }
+        public string name2 { get; set; }
         public double price { get; set; }
-        public double amount { get; set; }
+        public double volymiml { get; set; }
         public double alcohol { get; set; }
         public double apk { get; set; }
 
+        public string varugrupp { get; set; }
+        public string typ { get; set; }
+        public string ursprungslandnamn { get; set; }            
     }
 }

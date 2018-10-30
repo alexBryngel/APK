@@ -20,7 +20,8 @@ namespace ApK.Controllers
 
             return repo.GetEntities();
         }
-
+        
+        /*
         [HttpPost]
         public void post([FromBody]ItemModel item)
         {
@@ -29,8 +30,8 @@ namespace ApK.Controllers
             var itemEntity = new ItemEntity
             {
                 alcohol = item.alcohol,
-                amount = item.amount,
-                apk = item.alcohol * item.amount / item.price,                
+                volymiml = item.volymiml,
+                apk = item.alcohol * item.volymiml / item.price,                
                 name = item.name,
                 price = item.price
             };
@@ -38,5 +39,6 @@ namespace ApK.Controllers
 
             repo.addItem(itemEntity);
         }
+        */
     }
 }

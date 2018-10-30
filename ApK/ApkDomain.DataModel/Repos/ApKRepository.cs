@@ -25,6 +25,11 @@ namespace ApkDomain.DataModel.Repos
         public void addItemRaw(rawItemEntity rawItem)
         {
             _apkContext.rawItems.Add(rawItem);
+            //_apkContext.SaveChanges();
+        }
+
+        public void save()
+        {
             _apkContext.SaveChanges();
         }
 

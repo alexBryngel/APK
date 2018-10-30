@@ -19,7 +19,7 @@ namespace ApkDomain.DataModel.Entities
         public double Volymiml { get; set; }
         public double PrisPerLiter { get; set; }
         public DateTime Saljstart { get; set; }
-        public bool Utgått { get; set; }
+        public bool Utgatt { get; set; }
         public string Varugrupp { get; set; }
         public string Typ { get; set; }
         public string Stil { get; set; }
