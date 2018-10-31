@@ -16,26 +16,36 @@ namespace ApkDomain.DataModel.Repos
             _apkContext = apkContext;
         }
 
-        public void addItem(ItemEntity item)
+        public void AddItem(itemEntity item)
         {
             _apkContext.items.Add(item);
-            _apkContext.SaveChanges();
+            Save();
+        }
+        public void AddItemRange(IEnumerable<itemEntity> itemEntities)
+        {
+            _apkContext.items.AddRange(itemEntities);
+            Save();
         }
 
-        public void addItemRaw(rawItemEntity rawItem)
+        public void AddItemRaw(rawItemEntity rawItem)
         {
             _apkContext.rawItems.Add(rawItem);
-            //_apkContext.SaveChanges();
+            Save();
         }
 
-        public void save()
+        public void Save()
         {
             _apkContext.SaveChanges();
         }
 
-        public IEnumerable<ItemEntity> GetEntities()
+        public IEnumerable<itemEntity> GetItems()
         {
             return _apkContext.items;
+        }
+
+        public IEnumerable<rawItemEntity> GetRawItems()
+        {
+            return _apkContext.rawItems;
         }
     }
 }

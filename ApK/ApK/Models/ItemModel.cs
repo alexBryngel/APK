@@ -8,7 +8,7 @@ namespace ApK.Models
     public class ItemModel
     {
         public int Id { get; set; }
-        public string varunummer { get; set; }
+        public int varunummer { get; set; }
         public string name { get; set; }
         public string name2 { get; set; }
         public double price { get; set; }

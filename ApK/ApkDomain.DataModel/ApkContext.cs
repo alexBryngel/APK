@@ -16,7 +16,7 @@ namespace ApkDomain.DataModel
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
         }
-        public DbSet<ItemEntity> items { get; set; }
+        public DbSet<itemEntity> items { get; set; }
         public DbSet<personEntity> persons { get; set; }
         public DbSet<rawItemEntity> rawItems { get; set; }
     }

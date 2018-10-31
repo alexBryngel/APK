@@ -10,10 +10,10 @@ namespace ApkDomain.DataModel.Entities
     {
         public personEntity()
         {
-            items = new List<ItemEntity>();
+            items = new List<itemEntity>();
         }
         public int Id { get; set; }
         public string name { get; set; }
-        public List<ItemEntity> items { get; set; }
+        public List<itemEntity> items { get; set; }
     }
 }

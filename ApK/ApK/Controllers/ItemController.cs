@@ -1,4 +1,5 @@
 ﻿using ApK.Models;
+using ApK.Service;
 using ApkDomain.DataModel;
 using ApkDomain.DataModel.Entities;
 using ApkDomain.DataModel.Repos;
@@ -14,31 +15,10 @@ namespace ApK.Controllers
     public class ItemController : ApiController
     {
         [HttpGet]
-        public IEnumerable<ItemEntity> GetItems()
+        public IEnumerable<ItemModel> GetItems()
         {
-            var repo = new ApKRepository(new ApkContext());
-
-            return repo.GetEntities();
-        }
-        
-        /*
-        [HttpPost]
-        public void post([FromBody]ItemModel item)
-        {
-            var repo = new ApKRepository(new ApkContext());
-
-            var itemEntity = new ItemEntity
-            {
-                alcohol = item.alcohol,
-                volymiml = item.volymiml,
-                apk = item.alcohol * item.volymiml / item.price,                
-                name = item.name,
-                price = item.price
-            };
-
-
-            repo.addItem(itemEntity);
-        }
-        */
+            var service = new ApkService(new ApKRepository(new ApkContext()));
+            return service.GetAllItems();
+        }       
     }
 }

@@ -1,4 +1,5 @@
-﻿using ApkDomain.DataModel;
+﻿using ApK.Models;
+using ApkDomain.DataModel;
 using ApkDomain.DataModel.Entities;
 using ApkDomain.DataModel.Repos;
 using System;
@@ -20,7 +21,7 @@ namespace ApK.Service
 
         }
 
-        public void readXls()
+        public void ReadXls()
         {
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\abryngel\Documents\git\APK\ProductsNya.xls");
@@ -74,25 +75,68 @@ namespace ApK.Service
                 rawItem.Koscher = xlRange.Cells[i, 29].Value2 == 0d ? false : true;
                 rawItem.RavarorBeskrivning = xlRange.Cells[i, 30].Value2 ?? "";
 
-                _repo.addItemRaw(rawItem);
+                _repo.AddItemRaw(rawItem);
                 if (count == 200)
                 {
-                    _repo.save();
+                    _repo.Save();
                     count = 0;
                 }
             }
-            _repo.save();
+            _repo.Save();
             //cleanup
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
 
-        public void makeItemsFromRawItems()
+        public List<itemEntity> MakeItemsFromRawItems()
         {
-            
+            var rawList = _repo.GetRawItems().ToList();
+            var itemList = new List<itemEntity>();
+            rawList.ForEach(raw => itemList.Add(
+                            new itemEntity
+                            {
+                                alcohol = raw.Alkoholhalt,
+                                apk = raw.Alkoholhalt * raw.Volymiml / raw.Prisinklmoms,
+                                name = raw.Namn,
+                                name2 = raw.Namn2,
+                                ursprungslandnamn = raw.Ursprunglandnamn,
+                                price = raw.Prisinklmoms,
+                                typ = raw.Typ,
+                                varugrupp = raw.Varugrupp,
+                                varunummer = raw.Varnummer,
+                                volymiml = raw.Volymiml
+                            }
+                            )
+                            );
+            return itemList;
+        }
 
-            
+        public void AddItemsToDatabase()
+        {
+            _repo.AddItemRange(MakeItemsFromRawItems());
+        }
 
+        public IEnumerable<ItemModel> GetAllItems()
+        {
+            var itemList = _repo.GetItems().ToList();
+            var itemModelList = new List<ItemModel>();
+            itemList.ForEach(item => itemModelList.Add(
+                            new ItemModel
+                            {
+                                alcohol = item.alcohol,
+                                apk = item.apk,
+                                name = item.name,
+                                name2 = item.name2,
+                                ursprungslandnamn = item.ursprungslandnamn,
+                                price = item.price,
+                                typ = item.typ,
+                                varugrupp = item.varugrupp,
+                                varunummer = item.varunummer,
+                                volymiml = item.volymiml
+                            }
+                            )
+                            );
+            return itemModelList.OrderByDescending(item => item.apk);
         }
     }
 }
