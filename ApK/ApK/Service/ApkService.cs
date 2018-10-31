@@ -88,6 +88,51 @@ namespace ApK.Service
             GC.WaitForPendingFinalizers();
         }
 
+        public IEnumerable<ItemModel> GetItemsPerCatagory(string catagory)
+        {
+            
+
+            var itemList = _repo.GetItems().Where(item => item.varugrupp == catagory).ToList();
+            var itemModelList = new List<ItemModel>();
+            itemList.ForEach(item => itemModelList.Add(
+                            new ItemModel
+                            {
+                                alcohol = item.alcohol,
+                                apk = item.apk,
+                                name = item.name,
+                                name2 = item.name2,
+                                ursprungslandnamn = item.ursprungslandnamn,
+                                price = item.price,
+                                typ = item.typ,
+                                varugrupp = item.varugrupp,
+                                varunummer = item.varunummer,
+                                volymiml = item.volymiml
+                            }
+                            )
+                            );
+            return itemModelList.OrderByDescending(item => item.apk);
+        }
+
+        public Dictionary<string, int> GetCategorys()
+        {
+            var items = _repo.GetItems().ToList();
+            Dictionary<string, int> categories = new Dictionary<string, int>();
+            items.ForEach(item => {
+
+                if (categories.ContainsKey(item.varugrupp))
+                {
+                    categories[item.varugrupp] = ++categories[item.varugrupp];
+                }
+                else
+                {
+                    categories.Add(item.varugrupp, 1);
+                }
+            }
+                );
+
+            return categories;
+        }
+
         public List<itemEntity> MakeItemsFromRawItems()
         {
             var rawList = _repo.GetRawItems().ToList();

@@ -1,7 +1,6 @@
 ﻿using ApK.Models;
 using ApK.Service;
 using ApkDomain.DataModel;
-using ApkDomain.DataModel.Entities;
 using ApkDomain.DataModel.Repos;
 using System;
 using System.Collections.Generic;
@@ -12,14 +11,15 @@ using System.Web.Http;
 
 namespace ApK.Controllers
 {
-    public class ItemController : ApiController
+    public class ItemForCatagoryController : ApiController
     {
+
         [HttpGet]
-        public IEnumerable<ItemModel> GetItems()
+        public IEnumerable<ItemModel> GetItemsForCatagory([FromBody]string catagory)
         {
             var service = new ApkService(new ApKRepository(new ApkContext()));
-            return service.GetAllItems();
+
+            return service.GetItemsPerCatagory(catagory);
         }
-        
     }
 }
