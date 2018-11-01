@@ -2,6 +2,7 @@
 using ApkDomain.DataModel;
 using ApkDomain.DataModel.Entities;
 using ApkDomain.DataModel.Repos;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,9 @@ namespace ApK.Service
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             Excel.Range xlRange = xlWorksheet.UsedRange;
 
-            int rowCount = xlRange.Rows.Count;            
+            int rowCount = xlRange.Rows.Count;
 
-            
+
             //excel is not zero based!!
             var count = 0;
             for (int i = 1; i <= rowCount; i++)
@@ -90,26 +91,10 @@ namespace ApK.Service
 
         public IEnumerable<ItemModel> GetItemsPerCatagory(string catagory)
         {
-            
-
-            var itemList = _repo.GetItems().Where(item => item.varugrupp == catagory).ToList();
+            var itemList = _repo.GetItems().Where(item => item.varugrupp == catagory).ToList();        
             var itemModelList = new List<ItemModel>();
-            itemList.ForEach(item => itemModelList.Add(
-                            new ItemModel
-                            {
-                                alcohol = item.alcohol,
-                                apk = item.apk,
-                                name = item.name,
-                                name2 = item.name2,
-                                ursprungslandnamn = item.ursprungslandnamn,
-                                price = item.price,
-                                typ = item.typ,
-                                varugrupp = item.varugrupp,
-                                varunummer = item.varunummer,
-                                volymiml = item.volymiml
-                            }
-                            )
-                            );
+            itemList.ForEach(item => itemModelList.Add(Mapper.Map<ItemModel>(item)));
+
             return itemModelList.OrderByDescending(item => item.apk);
         }
 
@@ -117,7 +102,8 @@ namespace ApK.Service
         {
             var items = _repo.GetItems().ToList();
             Dictionary<string, int> categories = new Dictionary<string, int>();
-            items.ForEach(item => {
+            items.ForEach(item =>
+            {
 
                 if (categories.ContainsKey(item.varugrupp))
                 {
@@ -133,12 +119,12 @@ namespace ApK.Service
             return categories;
         }
 
-        public List<itemEntity> MakeItemsFromRawItems()
+        public List<ItemEntity> MakeItemsFromRawItems()
         {
             var rawList = _repo.GetRawItems().ToList();
-            var itemList = new List<itemEntity>();
+            var itemList = new List<ItemEntity>();
             rawList.ForEach(raw => itemList.Add(
-                            new itemEntity
+                            new ItemEntity
                             {
                                 alcohol = raw.Alkoholhalt,
                                 apk = raw.Alkoholhalt * raw.Volymiml / raw.Prisinklmoms,
@@ -165,22 +151,8 @@ namespace ApK.Service
         {
             var itemList = _repo.GetItems().ToList();
             var itemModelList = new List<ItemModel>();
-            itemList.ForEach(item => itemModelList.Add(
-                            new ItemModel
-                            {
-                                alcohol = item.alcohol,
-                                apk = item.apk,
-                                name = item.name,
-                                name2 = item.name2,
-                                ursprungslandnamn = item.ursprungslandnamn,
-                                price = item.price,
-                                typ = item.typ,
-                                varugrupp = item.varugrupp,
-                                varunummer = item.varunummer,
-                                volymiml = item.volymiml
-                            }
-                            )
-                            );
+            itemList.ForEach(item => itemModelList.Add(Mapper.Map<ItemModel>(item)));
+
             return itemModelList.OrderByDescending(item => item.apk);
         }
     }

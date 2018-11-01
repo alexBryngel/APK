@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApkDomain.DataModel.Entities
 {
-    public class itemEntity
+    public class ItemEntity
     {
         public int Id { get; set; }
         public int varunummer { get; set; }

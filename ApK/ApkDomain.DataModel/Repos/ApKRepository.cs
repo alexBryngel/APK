@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApkDomain.DataModel.Repos
 {
-    public class ApKRepository
+    public class ApKRepository : IApKRepository
     {
         private ApkContext _apkContext;
 
@@ -16,12 +16,12 @@ namespace ApkDomain.DataModel.Repos
             _apkContext = apkContext;
         }
 
-        public void AddItem(itemEntity item)
+        public void AddItem(ItemEntity item)
         {
             _apkContext.items.Add(item);
             Save();
         }
-        public void AddItemRange(IEnumerable<itemEntity> itemEntities)
+        public void AddItemRange(IEnumerable<ItemEntity> itemEntities)
         {
             _apkContext.items.AddRange(itemEntities);
             Save();
@@ -38,7 +38,7 @@ namespace ApkDomain.DataModel.Repos
             _apkContext.SaveChanges();
         }
 
-        public IEnumerable<itemEntity> GetItems()
+        public IEnumerable<ItemEntity> GetItems()
         {
             return _apkContext.items;
         }

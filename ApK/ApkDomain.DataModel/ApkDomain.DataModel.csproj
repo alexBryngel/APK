@@ -91,6 +91,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\ApKRepository.cs" />
+    <Compile Include="Repos\IApKRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

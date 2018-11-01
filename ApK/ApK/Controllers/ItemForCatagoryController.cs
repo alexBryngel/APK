@@ -15,7 +15,7 @@ namespace ApK.Controllers
     {
 
         [HttpGet]
-        public IEnumerable<ItemModel> GetItemsForCatagory([FromBody]string catagory)
+        public IEnumerable<ItemModel> GetItemsForCatagory(string catagory)
         {
             var service = new ApkService(new ApKRepository(new ApkContext()));
 
